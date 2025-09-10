@@ -19,42 +19,71 @@
         I’m especially interested in explainable AI, medical imaging, and useful, simple
         products like this page.
       </p>
+
+      <h2>Contact Form</h2>
+      <form action="#" method="post">
+        <fieldset>
+          <legend>Your Info</legend>
+    
+          <label for="firstName">First Name</label>
+          <input id="firstName" name="firstName" type="text" required />
+
+          <label for="lastName">Last Name</label>
+          <input id="lastName" name="lastName" type="text" required />
+    
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required />
+    
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" minlength="8" required />
+
+          <p>Do you like my website?</p>
+          <label><input type="radio" name="likewebsite" value="yes" required /> Yes</label>
+          <label><input type="radio" name="likewebsite" value="no" /> No</label>
+
+          <p>
+            <label><input type="checkbox" name="subscribe" value="yes"  /> Subscribe for more content!</label>
+          </p>
+
+          <label for="browser">Which is your preferred browser?</label>
+          <select id="browser" name="browser">
+            <option value="chrome">Chrome</option>
+            <option value="safari">Safari</option>
+            <option value="firefox">Firefox</option>
+            <option value="other">Other</option>
+          </select>
+          <p><button type="submit">Submit</button></p>
+        </fieldset>
+      </form>
+
+      <h2>Weekly Schedule</h2>
+      <table>
+        <caption>My usual week</caption>
+        <thread>
+          <tr>
+            <th scope="col">Day</th>
+            <th scope="col">Morning</th>
+            <th scope="col">Afternoon</th>
+          </tr>
+        </thread>
+        <tbody>
+          <tr>
+            <td>Monday</td>
+            <td>CS Lecture</td>
+            <td>Study & Gym</td>
+          </tr>
+          <tr>
+            <td>Wednesday</td>
+            <td>Data Science Lab</td>
+            <td>Project Work</td>
+          </tr>
+          <tr>
+            <td>Fridayy</td>
+            <td>Office Hours</td>
+            <td>Business & Family Time</td>
+          </tr>
+        </tbody>
+      </table>
     </main>
   </body>
 </html>
-
-<h2>Contact Form</h2>
-<form action="#" method="post">
-  <fieldset>
-    <legend>Your Info</legend>
-    
-    <label for="firstName">First Name</label>
-    <input id="firstName" name="firstName" type="text" required />
-
-    <label for="lastName">Last Name</label>
-    <input id="lastName" name="lastName" type="text" required />
-    
-    <label for="email">Email</label>
-    <input id="email" name="email" type="email" required />
-    
-    <label for="password">Password</label>
-    <input id="password" name="password" type="password" minlength="8" required />
-
-    <p>Do you like my website?</p>
-    <label><input type="radio" name="likewebsite" value="yes" required /> Yes</label>
-    <label><input type="radio" name="likewebsite" value="no" /> No</label>
-
-    <p>
-      <label><input type="checkbox" name="subscribe" value="yes"  /> Subscribe for more content!</label>
-    </p>
-
-    <label for="browser">Which is your preferred browser?</label>
-    <select id="browser" name="browser">
-      <option value="chrome">Chrome</option>
-      <option value="safari">Safari</option>
-      <option value="firefox">Firefox</option>
-      <option value="other">Other</option>
-    </select>
-    <p><button type="submit">Submit</button></p>
-  </fieldset>
-</form>
