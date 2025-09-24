@@ -3,46 +3,49 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Jadon Ferrance — PA01</title>
+    <title>Jadon N. Ferrance — PA02</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <main>
-      <h1>Hi, I’m Jadon Ferrance</h1>
-      <p>
-        I’m a Computer Science student at Florida A&M University (graduating May 2025).
-        In Summer 2024 I studied Data Science and Engineering for Discovery and Diversity
-        at John Cabot University in Rome. I like practical ML projects: I built a VGG16 +
-        Grad-CAM pipeline that classifies lung cancer subtypes and explains predictions,
-        and I developed fair loan-approval models using XGBoost with SHAP to detect and
-        reduce bias while keeping strong accuracy. Outside class I co-own Crowned Coils
-        Naturals, where I run digital marketing—content, social, SEO, and paid search.
-        I’m especially interested in explainable AI, medical imaging, and useful, simple
-        products like this page.
+      <h1>Jadon N. Ferrance</h1>
+      <p class="highlight">
+        I’m a Computer Science student at Florida Agricultural and Mechanical University (B.S. ’25).
+        In Summer 2024 I studied Data Science and Engineering for Discovery and Diversity at John Cabot University in Rome.
+        I enjoy practical ML: VGG16 + Grad-CAM for explainable lung-cancer imaging and XGBoost + SHAP for fair, interpretable
+        loan-approval models. I also co-own Crowned Coils Naturals, where I lead digital marketing and SEO.
       </p>
+
+      <address id="callout">
+        <a href="tel:+18134659350">(813) 465-9350</a>
+        · <a href="mailto:jadonnferrance@gmail.com">jadonnferrance@gmail.com</a>
+        · <a href="https://linkedin.com/in/jadon-ferrance">linkedin.com/in/jadon-ferrance</a>
+        · <a href="https://github.com/jadon1ferrance">github.com/jadon1ferrance</a>
+      </address>
 
       <h2>Contact Form</h2>
       <form action="#" method="post">
         <fieldset>
           <legend>Your Info</legend>
-    
+
           <label for="firstName">First Name</label>
-          <input id="firstName" name="firstName" type="text" required />
+          <input id="firstName" name="firstName" type="text" required>
 
           <label for="lastName">Last Name</label>
-          <input id="lastName" name="lastName" type="text" required />
-    
+          <input id="lastName" name="lastName" type="text" required>
+
           <label for="email">Email</label>
-          <input id="email" name="email" type="email" required />
-    
+          <input id="email" name="email" type="email" required>
+
           <label for="password">Password</label>
-          <input id="password" name="password" type="password" minlength="8" required />
+          <input id="password" name="password" type="password" minlength="8" required>
 
           <p>Do you like my website?</p>
-          <label><input type="radio" name="likewebsite" value="yes" required /> Yes</label>
-          <label><input type="radio" name="likewebsite" value="no" /> No</label>
+          <label><input type="radio" name="likewebsite" value="yes" required> Yes</label>
+          <label><input type="radio" name="likewebsite" value="no"> No</label>
 
           <p>
-            <label><input type="checkbox" name="subscribe" value="yes"  /> Subscribe for more content!</label>
+            <label><input type="checkbox" name="subscribe" value="yes"> Subscribe for more content!</label>
           </p>
 
           <label for="browser">Which is your preferred browser?</label>
@@ -50,15 +53,17 @@
             <option value="chrome">Chrome</option>
             <option value="safari">Safari</option>
             <option value="firefox">Firefox</option>
+            <option value="edge">Edge</option>
             <option value="other">Other</option>
           </select>
+
           <p><button type="submit">Submit</button></p>
         </fieldset>
       </form>
 
       <h2>Weekly Schedule</h2>
       <table>
-        <caption>My usual week</caption>
+        <caption>My typical week</caption>
         <thead>
           <tr>
             <th scope="col">Day</th>
@@ -78,7 +83,7 @@
             <td>Project Work</td>
           </tr>
           <tr>
-            <td>Fridayy</td>
+            <td>Friday</td>
             <td>Office Hours</td>
             <td>Business & Family Time</td>
           </tr>
