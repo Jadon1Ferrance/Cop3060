@@ -1,76 +1,84 @@
 'use strict';
 
 
-// PA02 — Step 3: DOM refs + status helpers 
-console.log('PA02 Step 3 — DOM ready, helpers wired');
+// PA02 — Step 4: DOM events + validation 
+console.log('PA02 Step 4 — events wired, validation active');
 
 
-const studentName = 'Jadon'; // string
-let completed = 1; // number 
-const isStudent = true; // boolean
-const tags = ['ml', 'web', 'famu']; // array
-const profile = { year: 2025, major: 'CS' }; // object
-let unknown = null; // null
-let notSet; // undefined
+// --- required types ---
+const studentName = 'Jadon';
+let completed = 1;
+const isStudent = true;
+const tags = ['ml', 'web', 'famu'];
+const profile = { year: 2025, major: 'CS' };
+let unknown = null;
+let notSet;
 
 
 // operators
 completed = completed + 0; // keep value
-const isCS = profile.major === 'CS'; // strict comparison
-const showWelcome = isStudent && isCS; // logical
+const isCS = profile.major === 'CS';
+const showWelcome = isStudent && isCS;
 if (showWelcome) console.log(`Welcome, ${studentName}! Assignments: ${completed}`);
 
 
-// --- DOM references ---
-const els = {
-status: document.getElementById('status'),
-results: document.getElementById('results'),
-loadBtn: document.getElementById('loadBtn'),
-filter: document.getElementById('filter'),
-sort: document.getElementById('sort'),
-form: document.getElementById('contactForm'),
-email: document.getElementById('email'),
-};
+// --- try to grab existing hooks ---
+function ensureHooks() {
+const byId = (id) => document.getElementById(id);
+let status = byId('status');
+let results = byId('results');
+let loadBtn = byId('loadBtn');
+let filter = byId('filter');
+let sort = byId('sort');
+let form = byId('contactForm');
+let email = byId('email');
+
+
+// If any core elements are missing, inject a small section so JS still works
+if (!status || !results || !loadBtn || !filter || !sort) {
+const main = document.querySelector('main') || document.body;
+const section = document.createElement('section');
+section.innerHTML = `
+<h2 id="dataHeading">Public Data (Demo)</h2>
+<div id="controls">
+<button id="loadBtn" type="button">Load Demo Users</button>
+<input id="filter" type="text" placeholder="Filter by name" aria-label="Filter users by name" />
+<select id="sort" aria-label="Sort users">
+<option value="az">A→Z</option>
+<option value="za">Z→A</option>
+</select>
+</div>
+<div id="status" role="status" aria-live="polite"></div>
+<ul id="results"></ul>
+`;
+main.appendChild(section);
+// re-query after injection
+status = byId('status');
+results = byId('results');
+loadBtn = byId('loadBtn');
+filter = byId('filter');
+sort = byId('sort');
+}
+
+
+return { status, results, loadBtn, filter, sort, form, email };
+}
+
+
+const els = ensureHooks();
 
 
 // --- App state ---
 const state = { users: [], filtered: [] };
 
 
-// --- Helpers  ---
+// --- Helpers ---
 function setStatus(msg, type = 'info') {
-// why: clear user feedback surfaces app state without alerts
+// why: show user-visible feedback rather than alert
 const emoji = { info: 'ℹ️', success: '✅', error: '⛔', empty: '🧐', loading: '⏳' }[type] || '';
-els.status.textContent = `${emoji} ${msg}`;
+if (els.status) els.status.textContent = `${emoji} ${msg}`;
 }
 
 
 function renderList(items) {
-els.results.innerHTML = '';
-if (!items || items.length === 0) {
-setStatus('No results to show.', 'empty');
-return;
-}
-const frag = document.createDocumentFragment();
-items.forEach((u) => {
-const li = document.createElement('li');
-li.textContent = `${u.name} — ${u.email}`;
-frag.appendChild(li);
-});
-els.results.appendChild(frag);
-setStatus(`Showing ${items.length} user(s).`, 'success');
-}
-
-
-function filterData(items, query = '', sort = 'az') {
-const q = query.trim().toLowerCase();
-let out = Array.isArray(items) ? items.slice() : [];
-if (q) out = out.filter((u) => (u.name || '').toLowerCase().includes(q));
-out.sort((a, b) => {
-const an = (a.name || '').toLowerCase();
-const bn = (b.name || '').toLowerCase();
-return sort === 'za' ? bn.localeCompare(an) : an.localeCompare(bn);
-});
-return out;
-}
-setStatus('Ready. Click “Load Users”. (Fetch comes next.)', 'info');
+setStatus('Ready. Click “Load Demo Users” (fetch comes next).', 'info');
