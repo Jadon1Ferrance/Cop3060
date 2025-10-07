@@ -5,7 +5,7 @@
 console.log('PA02 Step 5 — fetch flow ready');
 
 
-// Types/variables 
+// Types / variables
 const studentName = 'Jadon';
 let completed = 1;
 const isStudent = true;
@@ -40,9 +40,10 @@ const state = { users: [], filtered: [] };
 function buildUrl() { return 'https://jsonplaceholder.typicode.com/users'; }
 function setStatus(msg, type = 'info') {
 const emoji = { info: 'ℹ️', success: '✅', error: '⛔', empty: '🧐', loading: '⏳' }[type] || '';
-els.status.textContent = `${emoji} ${msg}`;
+if (els.status) els.status.textContent = `${emoji} ${msg}`;
 }
 function renderList(items) {
+if (!els.results) return;
 els.results.innerHTML = '';
 if (!items || items.length === 0) { setStatus('No results to show.', 'empty'); return; }
 const frag = document.createDocumentFragment();
@@ -65,4 +66,12 @@ async function fetchUsers() {
 try {
 setStatus('Loading users…', 'loading');
 const res = await fetch(buildUrl());
+if (!res.ok) throw new Error(`HTTP ${res.status}`);
+const data = await res.json();
+if (!Array.isArray(data)) throw new Error('Unexpected response');
+
+
+state.users = data; // keep all
+const initial = data.slice(0, Math.max(10, data.length));
+state.filtered = filterData(initial, els.filter?.value || '', els.sort?.value || 'az');
 setStatus('Ready. Click “Load Users” to fetch data.', 'info');
