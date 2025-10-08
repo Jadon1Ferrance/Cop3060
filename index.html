@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Jadon N. Ferrance — PA02</title>
+    <title>Jadon N. Ferrance — PA02 (JS)</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -11,34 +11,32 @@
       <h1>Jadon N. Ferrance</h1>
       <p class="highlight">
         I’m a Computer Science student at Florida Agricultural and Mechanical University (B.S. ’25).
-        In Summer 2024 I studied Data Science and Engineering for Discovery and Diversity at John Cabot University in Rome.
-        I enjoy practical ML: VGG16 + Grad-CAM for explainable lung-cancer imaging and XGBoost + SHAP for fair, interpretable
-        loan-approval models. I also co-own Crowned Coils Naturals, where I lead digital marketing and SEO.
+        I enjoy practical ML: VGG16 + Grad‑CAM for explainable imaging and XGBoost + SHAP for fair loan modeling.
       </p>
 
       <address id="callout">
-        <a href="tel:+18134659350">(813) 465-9350</a>
+        <a href="tel:+18134659350">(813) 465‑9350</a>
         · <a href="mailto:jadonnferrance@gmail.com">jadonnferrance@gmail.com</a>
         · <a href="https://linkedin.com/in/jadon-ferrance">linkedin.com/in/jadon-ferrance</a>
         · <a href="https://github.com/jadon1ferrance">github.com/jadon1ferrance</a>
       </address>
 
       <h2>Contact Form</h2>
-      <form action="#" method="post">
+      <form id="contactForm" action="#" method="post">
         <fieldset>
           <legend>Your Info</legend>
 
           <label for="firstName">First Name</label>
-          <input id="firstName" name="firstName" type="text" required>
+          <input id="firstName" name="firstName" type="text" required autocomplete="given-name" />
 
           <label for="lastName">Last Name</label>
-          <input id="lastName" name="lastName" type="text" required>
+          <input id="lastName" name="lastName" type="text" required autocomplete="family-name" />
 
           <label for="email">Email</label>
-          <input id="email" name="email" type="email" required>
+          <input id="email" name="email" type="email" required autocomplete="email" />
 
           <label for="password">Password</label>
-          <input id="password" name="password" type="password" minlength="8" required>
+          <input id="password" name="password" type="password" minlength="8" required autocomplete="new-password" />
 
           <p>Do you like my website?</p>
           <label><input type="radio" name="likewebsite" value="yes" required> Yes</label>
@@ -89,7 +87,23 @@
           </tr>
         </tbody>
       </table>
+
+      <!-- JS hooks for PA02  -->
+      <section aria-labelledby="dataHeading">
+        <h2 id="dataHeading">Public Data</h2>
+        <div id="controls">
+          <button id="loadBtn" type="button">Load Users</button>
+          <input id="filter" type="text" placeholder="Filter by name" aria-label="Filter users by name" />
+          <select id="sort" aria-label="Sort users">
+            <option value="az">A→Z</option>
+            <option value="za">Z→A</option>
+          </select>
+        </div>
+        <div id="status" role="status" aria-live="polite"></div>
+        <ul id="results"></ul>
+      </section>
     </main>
+
     <script src="app.js" defer></script>
   </body>
 </html>
